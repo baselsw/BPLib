@@ -1,4 +1,4 @@
-BPLib - BlueNar One (Arduino Compatible) - Bluetooth SPP/HID Library
+BPLib - Bluetooth SPP/HID Library
 =====
 
 This library simplifies the communication protocol between the RN-42 (HID enabled) device and the atmega32u4.
@@ -13,6 +13,10 @@ The library isn't complete, todo list:
 - Add, authorization mode: Toggle between an Open/Pin Locked connection.
 - Add, more keyboard scan codes
 - Add, software connection check (to support Arduino Uno/Leonardo/Mega)
+
+Working with following boards:
+- BlueNar One
+- Arduino(R) Leonardo (One function doesn't work, everything else AOK)
 
 The library will work with the following BT protocols:
 - SPP (Bluetooth Serial)
