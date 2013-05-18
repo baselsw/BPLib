@@ -16,7 +16,7 @@ BPMod.begin(BP_MODE_HID,BP_HID_KEYBOARD);   //Begin HID Mode with HID KEYBOARD A
 void loop(){
   delay(5000);    //Delay 5 seconds between each loop (Not nec.)
   BPMod.sendString("b");  //Send a string (will be recieved as keystroke)
-  BPMod.keyboardPress(BP_KEY_LEFT_ARROW,BP_MOD_NOMOD); //Send Scan code (KEY, MOD key)
+  BPMod.keyboardPress(BP_KEY_LEFT_ARROW,BP_MOD_NOMOD); //Send Scan code (KEY, MODEFIER key)
   BPMod.keyboardReleaseAll(); //Release all keys
   BPMod.sendString("a");
   BPMod.keyboardPress(BP_KEY_LEFT_ARROW,BP_MOD_NOMOD);
