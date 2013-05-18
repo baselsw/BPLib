@@ -6,7 +6,7 @@ Some functions won't work on for example (Arduino(R) Leonardo) because there is 
 and the atmega32u4. One of these functions/statements is the "connected()" statement in the library.
 
 The library is written with arduino statements (like Serial.begin(), etc) inorder to make the code very
-simple/understandable/editable to a arduino newcomer.
+simple/understandable/editable to a Arduino IDE newcomer.
 
 The library isn't complete, todo list:
 
