@@ -204,10 +204,10 @@ Serial1.write((byte)0xFD); //Start HID Report
 Serial1.write((byte)0x6); //Length byte
 Serial1.write((byte)BP_GAMEJOY_ST_NOBTN); //First Button byte
 Serial1.write((byte)BP_GAMEJOY_ND_NOBTN); //Second Button byte
-Serial1.write(BP_X1);	//First X coordinate
-Serial1.write(BP_Y1);	//First Y coordinate
-Serial1.write(BP_X2);	//Second X coordinate
-Serial1.write(BP_Y2);	//Second Y coordinate
+Serial1.write(BP_X1 & 0xFF);	//First X coordinate
+Serial1.write(BP_Y1 & 0xFF);	//First Y coordinate
+Serial1.write(BP_X2 & 0xFF);	//Second X coordinate
+Serial1.write(BP_Y2 & 0xFF);	//Second Y coordinate
 }
 void BPLib::gameJoyReleaseAll(){
 gameJoyPress(BP_GAMEJOY_ST_NOBTN, BP_GAMEJOY_ND_NOBTN);
