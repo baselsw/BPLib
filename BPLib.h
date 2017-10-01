@@ -1,7 +1,7 @@
 /*
   BPLib.h - Library for communication with RN-42 HID Bluetooth module
   Created by Basel Al-Rudainy, 6 april 2013.
-  
+
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
   License as published by the Free Software Foundation; either
@@ -123,31 +123,48 @@
 class BPLib
 {
 public:
-BPLib();
-byte begin(char BP_Mode[], char BP_Type[]);
-byte sendCmd(char BP_CMD[]);
-void sendByte(byte rawData);
-void sendChar(char rawData);
-void sendInt(int rawData);
-void sendFloat(float rawData);
-void sendLong(long rawData);
-void sendString(char rawData[]);
-byte readRaw();
-int available();
-void keyboardPrint(char BP_MSG[]);
-void keyboardPress(byte BP_KEY,byte BP_MOD);
-void keyboardReleaseAll();
-void mouseClick(byte BP_BUTTON);
-void mouseMove(signed int BP_X,signed int BP_Y);
-void mouseWheel(signed int BP_WHEEL);
-void mousePress(byte BP_BUTTON);
-void mouseReleaseAll();
-void gameJoyPress(byte BP_ST_BTN, byte BP_ND_BTN);
-void gameJoyMove(signed int BP_X1,signed int BP_Y1,signed int BP_X2,signed int BP_Y2);
-void gameJoyReleaseAll();
-byte connected();
-byte changeName(char BP_NAME[]);
+  BPLib(Stream &port, int pin = -1);
+  byte begin(char BP_Mode[], char BP_Type[]);
+  byte sendCmd(char BP_CMD[]);
+  void sendByte(byte rawData);
+  void sendChar(char rawData);
+  void sendInt(int rawData);
+  void sendFloat(float rawData);
+  void sendLong(long rawData);
+  void sendString(char rawData[]);
+  byte readRaw();
+  int available();
+  //Keyboard
+  void keyboardPrint(char BP_MSG[]);
+  void keyboardPress(byte BP_KEY,byte BP_MOD);
+  void keyboardReleaseAll();
+  // Mouse
+  void mouseClick(byte BP_BUTTON);
+  void mouseMove(signed int BP_X,signed int BP_Y);
+  void mouseWheel(signed int BP_WHEEL);
+  void mousePress(byte BP_BUTTON);
+  void mouseReleaseAll();
+  // Consumer
+  void volumeUp();
+  void volumeDown();
+  void muteAudio();
+  void playPause();
+  void nextTrack();
+  void prevTrack();
+  void stopAudio();
+  void fastForwardAudio();
+  void rewindAudio();
+  void keyRelease();
+  void sendConsumerCommand(byte lowByte, byte highByte);
+  // GamePad
+  void gameJoyPress(byte BP_ST_BTN, byte BP_ND_BTN);
+  void gameJoyMove(signed int BP_X1,signed int BP_Y1,signed int BP_X2,signed int BP_Y2);
+  void gameJoyReleaseAll();
+  int connected();
+  byte changeName(char BP_NAME[]);
 private:
-byte get(char BP_STAT[], byte strlen);
+  Stream *serialInterface;
+  int statusPin;
+  byte get(char BP_STAT[], byte strlen);
 };
 #endif
